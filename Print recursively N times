@@ -1,9 +1,11 @@
-void printNos(int N)
-{
-    //base condition
-    if(N >= 1) return;
-    
-    std::cout<< N<< ' ';
-    
-    printNos(N-1);
-}
+class Solution {
+  public:
+    int count = 0;
+    void printGfg(int N) {
+        if(count == N) return;
+        
+        count++;
+        cout << "GFG ";
+        printGfg(N);
+    }
+};
