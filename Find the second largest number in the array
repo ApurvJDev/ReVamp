@@ -14,7 +14,7 @@ class Solution {
   public:
     int print2largest(vector<int> &arr) {
         
-        if( (arr.size() == 2) && (arr.begin() == arr.end()) ) {
+        if( (arr.size() == 2) && (arr[0] == arr[1]) ) {  //The expression arr.begin() == arr.end() checks if the beginning iterator of the array is equal to the ending iterator, which would only be true if the array is empty.
             return -1;
         }
         
