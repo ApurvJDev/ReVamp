@@ -1,0 +1,36 @@
+  *
+ ***
+*****
+
+#include<bits/stdc++.h>
+using namespace std;
+
+void nStarTriangle(int n) {
+
+    if(n == 1) {
+        cout << '*';
+        return;
+    }
+
+    int tot = n * 2 - 1;    // num of stars in last row
+    int spaces = tot / 2;
+
+    for(int k = 1; k <= n; k++) {
+        //spaces
+        for(int i = 1; i <= spaces; i++) {
+            cout << ' ';
+        }
+        //stars
+        for(int i = 1; i <= tot - (spaces * 2); i++) {
+            cout << '*';
+        }
+        //spaces
+        for(int i = 1; i <= spaces; i++) {
+            cout << ' ';
+        }
+        spaces -= 1;
+        //going next line
+        cout << '\n';
+    }
+
+}
