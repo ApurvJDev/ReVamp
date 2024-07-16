@@ -3,9 +3,9 @@
 ##
 
 -
-void selectionSort(int arr[], int n)
-    {
-       int start, minVal, minIndex, temp;
+- void selectionSort(int arr[], int n)
+-    {
+-       int start, minVal, minIndex, temp;
        
        for(int start = 0; start < n; start++) {
            
