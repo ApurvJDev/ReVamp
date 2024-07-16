@@ -1,0 +1,25 @@
+
+
+void selectionSort(int arr[], int n)
+    {
+       int start, minVal, minIndex, temp;
+       
+       for(int start = 0; start < n; start++) {
+           
+           minVal = arr[start];
+           
+           for(int i = start + 1; i < n; i++) {
+               
+               if(arr[i] < minVal) {
+                   
+                   minVal = arr[i];
+                   
+                   minIndex = i;
+               }
+           }
+           //swapping of start and minVal
+           temp = arr[start];
+           arr[start] = minVal;
+           arr[minIndex] = temp;
+       }
+    }
