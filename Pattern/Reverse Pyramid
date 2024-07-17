@@ -1,0 +1,25 @@
+*****
+ ***
+  *
+
+void nStarTriangle(int n) {
+    int spaces = 0, stars = 2 * n - 1;
+
+    for(int k = 0; k < n; k++) {
+        //spaces
+        for(int i = 0; i < spaces; i++) {
+            cout << ' ';
+        }
+        //stars
+        for(int i = 0; i < stars; i++) {
+            cout << '*';
+        }
+        //spaces
+        for(int i = 0; i < spaces; i++) {
+            cout << ' ';
+        }
+        cout << '\n';
+        spaces += 1;    stars -= 2;
+    }
+    
+}
