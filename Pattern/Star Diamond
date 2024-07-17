@@ -1,0 +1,46 @@
+  *
+ ***
+*****
+*****
+ ***
+  *
+
+void nStarDiamond(int n) {
+    //pyramid
+    int total = 2 * n - 1;
+    int spaces = total / 2;
+    for(int j = 0; j < n; j++) {
+        //spaces
+        for(int i = 0; i < spaces; i++) {
+            cout << ' ';
+        }
+        //stars
+        for(int i = 0; i < total - (2 * spaces); i++) {
+            cout << '*';
+        }
+        //spaces
+        for(int i = 0; i < spaces; i++) {
+            cout << ' ';
+        }
+        cout << '\n';
+        spaces -= 1;
+    }
+    int space = 0;  // needed to use different var for rev pyramid
+    //reverse pyramid
+    for(int j = 0; j < n; j++) {
+        //spaces
+        for(int i = 0; i < space; i++) {
+            cout << ' ';
+        }
+        //stars
+        for(int i = 0; i < total - (2 * space); i++) {
+            cout << '*';
+        }
+        //spaces
+        for(int i = 0; i < space; i++) {
+            cout << ' ';
+        }
+        cout << '\n';
+        space += 1;
+    }
+}
