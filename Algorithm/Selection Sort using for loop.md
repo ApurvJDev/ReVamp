@@ -1,4 +1,4 @@
-### In selection sort we pushed the minimum element to the sorted part of the array
+### In selection sort we push the minimum element to the sorted part of the array
 ### Then we look for the next minimum element in the unsorted part of the array
 ### By default the first element of the unsorted part is considered to be the minimum
 
