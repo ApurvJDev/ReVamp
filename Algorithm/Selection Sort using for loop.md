@@ -1,3 +1,7 @@
+### In selection sort we pushed the minimum element to the sorted part of the array
+### Then we look for the next minimum element in the unsorted part of the array
+### By default the first element of the unsorted part is considered to be the minimum
+
 ![2888f5b](https://github.com/user-attachments/assets/a8f3f3d5-f6f0-489f-96bd-94e9e3097d28)
 
 ##
