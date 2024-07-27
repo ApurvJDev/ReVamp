@@ -1,5 +1,7 @@
 ### Takes and element and places it in correct position
-
+-
+-
+-
 
 
 #include <bits/stdc++.h> 
