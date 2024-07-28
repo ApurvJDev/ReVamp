@@ -1,0 +1,50 @@
+void merge(vector<int>&arr, int low, int mid, int high) {
+    int left = low, right = mid + 1;
+    vector<int>temp;
+
+    while(left <= mid && right <= high) {
+        //if left half num is smaller
+        if(arr[left] <= arr[right]) {
+            temp.push_back(arr[left]);
+            left += 1;
+        }
+        //if right half num is smaller
+        else {
+            temp.push_back(arr[right]);
+            right += 1;
+        }
+    }
+
+    //for remaining numbers
+    while(left <= mid) {
+        temp.push_back(arr[left]);
+        left += 1;
+    }
+    while(right <= high) {
+        temp.push_back(arr[right]);
+        right += 1;
+    }
+
+    //copy num from temp to main arr
+    for(int i = low; i <= high; i++) {
+        arr[i] = temp[i - low];
+    }
+}
+
+void ms(vector<int>&arr, int low, int high) {
+    //base condition
+    if(low >= high) {
+        return;
+    }
+    int mid = (low + high) / 2;
+    //left sub half
+    ms(arr, low, mid);
+    //righ sub half
+    ms(arr, mid + 1, high);
+    //merge both half
+    merge(arr, low, mid, high);
+}
+
+void mergeSort(vector < int > & arr, int n) {
+    ms(arr, 0, n - 1);
+}
