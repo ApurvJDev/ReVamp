@@ -1,5 +1,3 @@
-### Pick a pivot, then change the position of all elements within the array such that all elements less than the pivot are to left of it and all elements greater than the pivot are to the right of it.
+### 1) Pick a pivot and place it in it's correct position
 
-### OR YOU CAN ALSO SAY THAT, 
-
-### Pick an element and place it in its correct position in the sorted array
+### 2) Smaller elements will be placed on the left and bigger elements will be placed on the right of the pivot.
