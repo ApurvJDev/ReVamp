@@ -7,26 +7,22 @@
 ##
 
 -
-- void selectionSort(int arr[], int n)
--    {
--       int start, minVal, minIndex, temp;
-       
-       for(int start = 0; start < n; start++) {
-           
-           minVal = arr[start];
-           
-           for(int i = start + 1; i < n; i++) {
-               
-               if(arr[i] < minVal) {
-                   
-                   minVal = arr[i];
-                   
-                   minIndex = i;
-               }
-           }
-           //swapping of start and minVal
-           temp = arr[start];
-           arr[start] = minVal;
-           arr[minIndex] = temp;
-       }
+- #include <bits/stdc++.h> 
+- void selectionSort(vector<int>& arr, int n)
+- {   
+-     for(int i = 0; i < n; i++) {
+        int smallest = arr[i];
+        int sI = i;//if below condition fails sI will never be initialized
+        //comparison
+        for(int j = i + 1; j < n; j++) {
+            if(arr[j] < smallest) {
+                smallest = arr[j];//store the val of smallest num
+                sI = j;//store the position of the smallest index
+            }
+        }
+        // swapping
+        int temp = arr[i];
+        arr[i] = smallest;
+        arr[sI] = temp;
     }
+}
