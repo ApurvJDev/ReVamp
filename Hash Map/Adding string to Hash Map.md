@@ -1,5 +1,5 @@
-- int main() {
--     string s = "racecar";
+ int main() {
+     string s = "racecar";
 -     map<char, int> sMap;
 -     
 -     for(char ch : s) {
