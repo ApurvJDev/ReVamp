@@ -1,0 +1,16 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main() {
+-     string s = "racecar";
+-     map<char, int> sMap;
+     
+-     for(char ch : s) {
+         sMap[ch]++;
+     }
+     
+ -     for(const auto& pair : sMap) {
+         cout << pair.first << ":" << pair.second << '\n';
+     }
+-     return 0;
+ }
