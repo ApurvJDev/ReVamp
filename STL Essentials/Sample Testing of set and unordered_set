@@ -1,0 +1,35 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void check(vector<int>& nums) {
+    
+    unordered_set<int>unique;
+    unordered_set<int>unique2;
+    set<int>unique3;
+    cout << "Hash Set output below" << '\n';
+    for(int i : nums) {
+        cout << i << ':' << unique.count(i) << '\n';
+        unique.insert(i);
+    }
+    cout << "Testing Set output below" << '\n';
+    for(int j : nums) {
+        cout << j << ':' << unique3.count(j) << '\n';
+        unique3.insert(j);
+    }
+    cout << "Only Set output below" << '\n';
+    for(int j : unique3) {
+        cout << j << ':' << unique3.count(j) << '\n';
+    }
+    for(int i : nums) {
+        unique2.insert(i);
+    }
+    cout << "SET OUTPUT" << '\n';
+    for(int i : unique2) {
+        cout << i << ' ';
+    }
+}
+int main() {
+    vector<int> nums = {1,1,1,3,3,4,3,2,4,2};
+    check(nums);
+    return 0;
+}
