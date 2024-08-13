@@ -1,3 +1,5 @@
+USING unordered_set is better than using set for some reason in terms of faster runtime. Almost 50ms difference
+
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
