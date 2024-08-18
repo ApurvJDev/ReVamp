@@ -1,0 +1,24 @@
+class Solution {
+public:
+    void rotate(vector<int>& nums, int k) {
+        k = k % nums.size();
+
+        //reverse entire array
+        reverse(nums.begin(), nums.end());
+
+        // reverse first k elements
+        reverse(nums.begin(), nums.begin() + k);
+
+        // reverse remaining elements
+        reverse(nums.begin() + k, nums.end());
+
+        /* 1 2 3 4 5 6 7
+        reverse
+           7 6 5 4 3 2 1
+        reverse first k elements
+           5 6 7 4 3 2 1
+        reverse remaining elements
+           5 6 7 1 2 3 4
+        */
+    }
+};
