@@ -5,12 +5,12 @@
 ![2888f5b](https://github.com/user-attachments/assets/a8f3f3d5-f6f0-489f-96bd-94e9e3097d28)
 
 ##
+```
 
--
-- #include <bits/stdc++.h> 
-- void selectionSort(vector<int>& arr, int n)
-- {   
--     for(int i = 0; i < n; i++) {
+ #include <bits/stdc++.h> 
+ void selectionSort(vector<int>& arr, int n)
+ {   
+     for(int i = 0; i < n; i++) {
         int smallest = arr[i];
         int sI = i;//if below condition fails sI will never be initialized
         //comparison
@@ -26,3 +26,4 @@
         arr[sI] = temp;
     }
 }
+```
