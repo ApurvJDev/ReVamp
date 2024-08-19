@@ -3,12 +3,12 @@
 ### 2) Smaller elements will be placed on the left and bigger elements will be placed on the right of the pivot.
 
 
+```
 
-
-- int partition(vector<int>& arr, int low, int high) {
--   int pivot = arr[low];
--    int i = low;
--    int j = high;
+ int partition(vector<int>& arr, int low, int high) {
+   int pivot = arr[low];
+    int i = low;
+    int j = high;
 
     while( i < j) {
         // find the first element from the left gr8er than pivot
@@ -34,11 +34,12 @@ void qs(vector<int>& arr, int low, int high) {
         qs(arr, low, pi - 1);
         qs(arr, pi + 1, high);
     }
--}
+}
 
-- vector<int> quickSort(vector<int> arr)
-- {
--     qs(arr, 0, arr.size() - 1);
--     return arr;
-- }
+ vector<int> quickSort(vector<int> arr)
+ {
+     qs(arr, 0, arr.size() - 1);
+     return arr;
+ }
 
+```
