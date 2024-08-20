@@ -1,0 +1,11 @@
+We use the formula of first n natural numbers
+
+int missingNumber(vector<int>& nums) {
+        int n = nums.size();
+        int sumOfn = (n * (n + 1) ) / 2;
+        int sumOfnums = 0;
+        for(int i : nums) {
+            sumOfnums = sumOfnums + i;
+        }
+        return sumOfn - sumOfnums;
+    }
