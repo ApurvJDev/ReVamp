@@ -1,31 +1,27 @@
-class Solution {
-public:
-    vector<int> productExceptSelf(vector<int>& nums) {
-        vector<int> result;     int product = 1;    
-        bool isZero = false;    int num = 1;
+vector<int> productExceptSelf(vector<int>& nums) {
+        vector<int> result(nums.size(), 0);     
+        int product = 1;    
         int countZero = 0;
+
         for(int i = 0; i < nums.size(); i++) {
             if(nums[i] != 0) {
                 product = product * nums[i];
             } else {
-                isZero = true;
                 countZero += 1;
             }  
         }
-        if(countZero > 1) {
-            product = 0; // all nums are zero or more than one zero
+        if(countZero > 1) { // all nums are zero or more than one zero
+            return result;
         }
 
         for(int i = 0; i < nums.size(); i++) {
-            if(isZero && nums[i] != 0) {
-                num = 0;
+            if(countZero > 0 && nums[i] != 0) {
+                result[i] = 0;
             } else if(nums[i] == 0) {
-                num = product;
+                result[i] = product;
             } else {
-                num = product / nums[i];
+                result[i] = product / nums[i];
             }
-            result.push_back(num);
         }
         return result;
     }
-};
