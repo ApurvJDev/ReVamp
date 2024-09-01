@@ -1,0 +1,67 @@
+You are given two strings, coordinate1 and coordinate2, representing the coordinates of a square on an 8 x 8 chessboard.
+Return true if these two squares have the same color and false otherwise.
+
+The coordinate will always represent a valid chessboard square. The coordinate will always have the letter first (indicating its column), and the number second (indicating its row).
+
+Example 1:
+Input: coordinate1 = "a1", coordinate2 = "c3"
+Output: true
+Explanation:
+Both squares are black.
+
+Example 2:
+Input: coordinate1 = "a1", coordinate2 = "h3"
+Output: false
+Explanation:
+Square "a1" is black and "h3" is white.
+
+class Solution {
+public:
+    bool checkTwoChessboards(string coordinate1, string coordinate2) {
+        char c1 = (char)coordinate1[0];
+        char c2 = (char)coordinate2[0];
+        int n1, n2;
+        stringstream s;
+        s << coordinate1[1];
+        s >> n1;
+        s.clear();
+        s << coordinate2[1];
+        s >> n2;
+        string color1, color2;
+        //coordinate1 
+        if(c1 == 'a' || c1 == 'c' || c1 == 'e' || c1 == 'g') {
+            if(n1 % 2 == 0) {
+                color1 = "white";
+            } else {
+                color1 = "black";
+            }
+        } else {
+            if(n1 % 2 == 0) {
+                color1 = "black";
+            } else {
+                color1 = "white";
+            }
+            
+        }
+        //coordinate2 
+        if(c2 == 'a' || c2 == 'c' || c2 == 'e' || c2 == 'g') {
+            if(n2 % 2 == 0) {
+                color2 = "white";
+            } else {
+                color2 = "black";
+            }
+        } else {
+            if(n2 % 2 == 0) {
+                color2 = "black";
+            } else {
+                color2 = "white";
+            }
+            
+        }
+
+        if(color1 == color2) {
+            return true;
+        }
+        return false;
+    }
+};
