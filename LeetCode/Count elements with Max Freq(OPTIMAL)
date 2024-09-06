@@ -1,0 +1,19 @@
+int maxFrequencyElements(vector<int>& nums) {
+        unordered_map<int, int> freq;
+        int max = INT_MIN, count = 0;
+// map of element and its frequnecy
+        for(auto it : nums) {
+            freq[it]++;
+        }
+        for(auto it : freq) {
+            if(it.second > max) {
+                max = it.second;
+            }
+        }
+        for(auto it : freq) {
+            if(it.second == max) {
+                count = count + it.second;
+            }
+        }
+        return count;
+    }
