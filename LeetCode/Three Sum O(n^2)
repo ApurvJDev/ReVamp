@@ -1,0 +1,39 @@
+vector<vector<int>> threeSum(vector<int>& nums) {
+        set<vector<int>> st;
+        unordered_map<int, int> mp;
+
+//populate value -> index map
+        for(int i = 0; i < nums.size(); i++) {
+            mp[nums[i]] = i;
+        }
+
+//when nums only has 1 element
+        if(mp.size() == 1) {
+            vector<vector<int>> res;
+//if accumulate > 0 then triplet not possible
+            if(accumulate(nums.begin(), nums.end(), 0) > 0) {
+                return res;
+            } 
+//if accumulate < 0 then nums only has 0's
+            else {
+                vector<int> temp = {nums[0], nums[0], nums[0]};
+                res.push_back(temp);
+                return res;
+            }
+        }
+
+        for(int i = 0; i < nums.size(); i++) {
+            for(int j = i + 1; j < nums.size(); j++) {
+
+                auto it = mp.find(0 - (nums[i] + nums[j]));
+
+                if(it != mp.end() && it->second != i && it->second != j) {
+                    vector<int> temp = {nums[i], nums[j], it->first};
+                    sort(temp.begin(), temp.end());
+                    st.insert(temp);
+                }   
+            }
+        }
+        vector<vector<int>> res(st.begin(), st.end());
+        return res;
+    }
