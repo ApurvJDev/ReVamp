@@ -1,0 +1,15 @@
+int majorityElement(vector<int>& nums) {
+        int res, count = 0;
+
+        for(int i : nums) {
+            if(count == 0) {
+                res = i;
+            }
+            if(i == res) {
+                count += 1;
+            } else {
+                count -= 1;
+            }
+        }
+        return res;
+    }
