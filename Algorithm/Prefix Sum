@@ -1,0 +1,16 @@
+int subarraySum(vector<int>& nums, int k) {
+        unordered_map<int, int> prefixSum;
+        int count = 0, sum = 0;
+
+        prefixSum[0] = 1;
+
+        for(int i : nums) {
+            sum = sum + i;
+            auto it = prefixSum.find(sum - k);
+            if(it != prefixSum.end()) {
+                count = count + it->second;
+            }
+            prefixSum[sum]++;
+        }   
+        return count;
+    }
