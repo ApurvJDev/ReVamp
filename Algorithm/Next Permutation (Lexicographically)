@@ -1,0 +1,22 @@
+    void nextPermutation(vector<int>& nums) { 
+        int i = nums.size() - 2, j = nums.size() - 1;
+        // find the partition
+        for(i; i >= 0; i--) {
+            if(nums[i] < nums[i + 1] ) {
+                break;
+            }
+        }
+        if(i < 0) { // descending array
+            reverse(nums.begin(), nums.end());
+        } 
+        // find the substitution
+        else {
+            for(j; j > i; j--) {
+                if(nums[j] > nums[i]) {
+                    break;
+                }
+            }
+            swap(nums[i], nums[j]);
+            reverse(nums.begin() + i + 1, nums.end());
+        }
+    }
