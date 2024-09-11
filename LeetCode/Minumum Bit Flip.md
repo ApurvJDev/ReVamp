@@ -27,9 +27,7 @@ Constraints:
 Compare the bits and the one's that are not equal will be the number of flips required.
 
 To determine how many bits are needed to represent a decimal number in binary, you can use the following formula: 
-$$
-n = \lceil \log_2 N \rceil 
-$$
+$n = \lceil \log_2 N \rceil$
 
 
 Hence, for $10^9$ 30 bits will be required
