@@ -1,6 +1,6 @@
     void nextPermutation(vector<int>& nums) { 
         int i = nums.size() - 2, j = nums.size() - 1;
-        // find the partition
+        // find the break point
         for(i; i >= 0; i--) {
             if(nums[i] < nums[i + 1] ) {
                 break;
