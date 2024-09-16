@@ -1,28 +1,20 @@
-
+## It finds the maximum element from the unsorted part of the array and places it at the last position
 ![1](https://github.com/user-attachments/assets/0508f9a4-aa4c-462c-8c63-fd8bf217ff18)
 
 ```
 void bubbleSort(int arr[], int n) {
         
-        int comparison = n - 1;
-        
-        for(int i = 0; i < n - 1; i++) {
+        for(int i = 0; i < n - 1; i++) {    // no. of steps
             
-            int j = 0, k = 1, temp;
-            
-            for(int c = 0; c < comparison; c++) {
+            for(int j = 0; j < n - i - 1; j++) {    // comparisons
                 
-                if(arr[j] > arr[k]) {
-                    // swapping
-                    temp = arr[j];
-                    arr[j] = arr[k];
-                    arr[k] = temp;  
+                //swapping
+                if(arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
                 }
-                j += 1; // comparison of next to adjacent elements
-                k += 1;
             }
-            comparison -= 1;    // after each iteration max element will be last
         }
-        
     }
 ```
