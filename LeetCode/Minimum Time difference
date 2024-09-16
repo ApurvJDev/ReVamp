@@ -1,0 +1,37 @@
+Given a list of 24-hour clock time points in "HH:MM" format, return the minimum minutes difference between any two time-points in the list.
+Example 1:
+Input: timePoints = ["23:59","00:00"]
+Output: 1
+Example 2:
+Input: timePoints = ["00:00","23:59","00:00"]
+Output: 0
+
+Constraints:
+2 <= timePoints.length <= 2 * 104
+timePoints[i] is in the format "HH:MM".
+
+int findMinDifference(vector<string>& timePoints) {
+        vector<int> minutes;
+// converting hours to minutes
+        for(string i : timePoints) {
+            string hour = i.substr(0,2);// starting at indx 0 len 2
+            string mins = i.substr(3);// starting at indx 3 till the end
+            int hr = stoi(hour);
+            int min = stoi(mins);
+            min += hr * 60;
+            minutes.push_back(min);
+        }
+
+        sort(minutes.begin(), minutes.end());
+
+// calculating difference b/w first and last element because time is cyclic
+// cyclic diff is total min - last + first
+        int diff = 1440 - minutes[minutes.size() - 1] + minutes[0];
+        int maxDiff = diff;
+        for(int i = 1; i < minutes.size(); i++) {
+            diff = abs(minutes[i] - minutes[i - 1]);
+
+            maxDiff = min(diff, maxDiff);
+        }
+        return maxDiff;
+    }
