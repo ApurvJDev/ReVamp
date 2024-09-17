@@ -16,3 +16,22 @@ int search(vector<int>& nums, int target) {
         }
         return -1;
     }
+
+// Recursive Approach
+
+int binarySearch(int left, int right, int target, vector<int>& nums) {
+    int mid = (left + right) / 2;
+    
+    if(right >= left) {
+        if(nums[mid] == target) {
+        return mid;
+        }
+        else if(nums[mid] > target) {
+            binarySearch(left, mid - 1, 3, nums);
+        }
+        else {
+            binarySearch(mid + 1, right, 3, nums);
+        }
+    }
+    return -1;
+}
