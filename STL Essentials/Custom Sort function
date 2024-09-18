@@ -1,0 +1,46 @@
+string largestNumber(vector<int>& nums) {
+        string res = "";
+
+// use greater than symbol when u want descending order
+        sort(nums.begin(), nums.end(), [](int a, int b){
+            return to_string(a) + to_string(b) > to_string(b) + to_string(a);
+        });
+
+        for(int i = 0; i < nums.size(); i++) {
+            res.append(to_string(nums[i]));
+        }
+        if(res[0] == '0') {
+            return "0";
+        }
+        return res;
+    }
+
+
+For example:- array = [2,20,1,100]
+
+Simple Sort Function:-
+A simple sort function sorts the array in ascending order without any constraints.
+after sorting array = [1,2,20,100]
+
+Custom Sort Function:-
+In a custom sort function we can put some constraints to sort the array, here I have put a constraint to check the pair of integers-
+to_string(a)+to_string(b)>to_string(b)+to_string(a)
+If this statement is true then a comes first in the array otherwise b comes first.
+after sorting array = [2,20,1,100]
+
+Note:-In sorted array we can check that above statement is true for all pairs.
+220>202 [2,20]
+21>12 [2,1]
+2100>1002 [2,100]
+201>120 [20,1]
+20100>10020 [20,100]
+1100>1001 [1,100]
+
+
+nums =  [3,30,34,5,9]
+
+30 3:3 30
+30 3:3 30
+34 3:3 34
+5 34:34 5
+9 5:5 9
