@@ -1,0 +1,38 @@
+You are given an array 'arr' sorted in non-decreasing order and a number 'x'. You must return the index of the lower bound of 'x'.
+Note:
+1. For a sorted array 'arr', 'lower_bound' of a number 'x' is defined as the smallest index 'idx' such that the value 'arr[idx]' is not less than 'x'.If all numbers are smaller than 'x', then 'n' should be the 'lower_bound' of 'x', where 'n' is the size of array.
+2. Try to do this in O(log(n)).
+
+Example:
+Input: ‘arr’ = [1, 2, 2, 3] and 'x' = 0
+Output: 0
+Explanation: Index '0' is the smallest index such that 'arr[0]' is not less than 'x'.
+
+int lowerBound(vector<int> arr, int n, int x) {
+	int left = 0, right = n - 1;
+
+	if(x <= arr[0]) {
+		return 0;
+	}
+	if(x > arr[n - 1]) {
+		return n;
+	}
+
+	while(left <= right) {
+		int mid = (left + right) / 2;
+
+		if(x == arr[mid]) {
+			while(arr[mid] != x && mid > 0) {
+				mid -= 1;
+			}
+			return mid;
+		}
+		else if(x > arr[mid]) {
+			left = mid + 1;
+		} 
+		else {
+			right = mid - 1;
+		} 
+	}
+	return left;
+}
