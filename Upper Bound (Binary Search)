@@ -1,0 +1,26 @@
+int upperBound(vector<int> &arr, int x, int n){
+	int left = 0, right = n - 1;
+	if(x < arr[0]) {
+		return 0;
+	} 
+	if(x > arr[n - 1]) {
+		return n;
+	}
+	while(left <= right) {
+		int mid = (left + right) / 2;
+
+		if(x == arr[mid]) {
+			while(x == arr[mid] && mid < n) {
+				mid += 1;
+			}
+			return mid;
+		}
+		else if(x < arr[mid]) {
+			right = mid - 1;
+		} 
+		else {
+			left = mid + 1;
+		}
+	}
+	return left;
+}
