@@ -1,0 +1,43 @@
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        if(nums.size() == 1 && nums[0] == target) {
+            return 0;
+        } else if(nums.size() == 1){
+            return -1;
+        }
+        int min = INT_MAX, pivot;
+// finding the minimum element ie pivot
+        for(int i = 0; i < nums.size(); i++) {
+            if(nums[i] < min) {
+                min = nums[i];
+                pivot = i;
+            }
+        }
+// reverse from 0 to pivot - 1
+        reverse(nums.begin(), nums.begin() + pivot);
+// reverse from pivot to end
+        reverse(nums.begin() + pivot, nums.end());
+// swapping left and right nums
+        int l = 0, r = nums.size() - 1;
+        while(l < r) {
+            swap(nums[l], nums[r]);
+            l += 1; r -= 1;
+        }
+// Simple Binary Search
+        int left = 0, right = nums.size() - 1;
+
+        while(left <= right) {
+            int mid = (left + right) / 2;
+
+            if(nums[mid] == target) {
+                return (mid + pivot) % nums.size(); 
+            } else if(nums[mid] < target) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return -1; // target not found
+    }
+};
