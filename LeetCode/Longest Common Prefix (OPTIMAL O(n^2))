@@ -1,0 +1,23 @@
+int longestCommonPrefix(vector<int>& arr1, vector<int>& arr2) {
+        unordered_set<int> st;
+        int maxCount = 0;
+
+// insert all possible prefixes of arr1 in set
+        for(int i : arr1) {
+            while(i > 0) {
+                st.insert(i);
+                i = i / 10;
+            }
+        }
+// check all prefixes
+        for(int i : arr2) {
+            while(i > 0) {
+                if(st.find(i) != st.end()) {
+                    maxCount = max(maxCount, (int)to_string(i).size());//max or size of prefix
+                    break;
+                }
+                i = i / 10;
+            }
+        }
+        return maxCount;
+    }
