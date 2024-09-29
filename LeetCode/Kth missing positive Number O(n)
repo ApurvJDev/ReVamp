@@ -1,0 +1,39 @@
+Given an array arr of positive integers sorted in a strictly increasing order, and an integer k.
+Return the kth positive integer that is missing from this array.
+
+Example 1:
+Input: arr = [2,3,4,7,11], k = 5
+Output: 9
+Explanation: The missing positive integers are [1,5,6,8,9,10,12,13,...]. The 5th missing positive integer is 9.
+
+Example 2:
+Input: arr = [1,2,3,4], k = 2
+Output: 6
+Explanation: The missing positive integers are [5,6,7,...]. The 2nd missing positive integer is 6.
+
+Example 3:
+Input: arr = [5,6,7,8,9], k = 9
+Output: 14
+
+int findKthPositive(vector<int>& arr, int k) {
+        unordered_map<int, int> mp;
+        vector<int> missing;
+
+        int n = arr.size();
+        int max = arr[n - 1];
+        int missingCount = max - n;
+
+        if(k <= missingCount) { // missing number is present in the range 1 -> max
+            for(int i : arr) {
+                mp[i]++;
+            }
+            for(int i = 1; i <= max; i++) {
+                if(mp.find(i) == mp.end()) {// number is missing
+                    missing.push_back(i);
+                }
+            }
+            return missing[k - 1];
+        } 
+        return arr[n - 1] + (k - missingCount);// missing number starts after max
+        // there could be missing numbers before arr[0] so we need to account for that
+    }
