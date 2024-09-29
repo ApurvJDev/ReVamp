@@ -18,22 +18,17 @@ Output: 14
 int findKthPositive(vector<int>& arr, int k) {
         unordered_map<int, int> mp;
         vector<int> missing;
+        int n = arr.size(), max = arr[n - 1];
 
-        int n = arr.size();
-        int max = arr[n - 1];
-        int missingCount = max - n;
+        for(int i : arr) {
+            mp[i]++;
+        }
+        for(int i = 1; i <= max; i++) {
+            if(mp.find(i) == mp.end()) {// number is missing
+                missing.push_back(i);
+            } 
+        }
+        if(k <= missing.size()) return missing[k - 1];
 
-        if(k <= missingCount) { // missing number is present in the range 1 -> max
-            for(int i : arr) {
-                mp[i]++;
-            }
-            for(int i = 1; i <= max; i++) {
-                if(mp.find(i) == mp.end()) {// number is missing
-                    missing.push_back(i);
-                }
-            }
-            return missing[k - 1];
-        } 
-        return arr[n - 1] + (k - missingCount);// missing number starts after max
-        // there could be missing numbers before arr[0] so we need to account for that
+        return arr[n - 1] + (k - missing.size());
     }
