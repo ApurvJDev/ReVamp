@@ -1,0 +1,30 @@
+bool placeCows(int dist, vector<int> &stalls, int k) {
+    int cows = 1; // already placed one cow at pos 0
+    int last = 0;
+    for(int i = 1; i < stalls.size(); i++) {
+        if( stalls[i] - stalls[last] >= dist ) {
+            cows += 1;
+            last = i;
+        }
+    }
+    if(cows >= k) return true;
+    return false;
+}
+
+int aggressiveCows(vector<int> &stalls, int k)
+{
+    sort(stalls.begin(), stalls.end());
+
+    int left = 1, right = stalls[stalls.size() - 1];
+
+    while(left <= right) {
+        int mid = (left + right) / 2; // mid = minimum distance
+
+        if(placeCows(mid, stalls, k)) {
+            left = mid + 1; // try for more distances
+        } else {
+            right = mid - 1; // try for smaller distances
+        }
+    } 
+    return right; 
+}
