@@ -1,0 +1,14 @@
+int findKthPositive(vector<int>& arr, int k) {
+        int left = 0, right = arr.size() - 1;
+
+        while(left <= right) {//finding kth missing num b/w which 2 indexes
+            int mid = (left + right) / 2;
+            int missCnt = arr[mid] - (mid + 1);
+            if(missCnt < k) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return left + k;
+    }
