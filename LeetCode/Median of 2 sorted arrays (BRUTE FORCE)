@@ -1,0 +1,32 @@
+double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+        vector<int> v;
+        int l = 0, r = 0;
+        while(l < nums1.size() && r < nums2.size()) {
+            cout << nums1[l] << ' ' << nums2[r] << '\n';
+            if(nums1[l] < nums2[r]) {
+                v.push_back(nums1[l]);
+                l += 1;
+            } else {
+                v.push_back(nums2[r]);
+                r += 1;
+            }
+        }
+// if there is remaining in nums1
+        while(l < nums1.size()) {
+            v.push_back(nums1[l]); 
+            l += 1;
+        }
+// if there is remaining in nums2
+        while(r < nums2.size()) {
+            v.push_back(nums2[r]);
+            r += 1;
+        }
+        for(int i : v) {
+            cout << i << ' ';
+        }
+        int n = v.size();
+// if length of arr is even then return middle number
+// if it is odd then return (mid - 1 + mid) / 2.0
+        return n % 2 ? v[n / 2] : (v[(n / 2) - 1] + v[n / 2]) / 2.0;
+                    // 0 = even : 1 = odd
+    } 
