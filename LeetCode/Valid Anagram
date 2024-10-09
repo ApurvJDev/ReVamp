@@ -1,0 +1,19 @@
+bool isAnagram(string s, string t) {
+        unordered_map<char, int> freqMap;
+        for(char c : s) {
+            freqMap[c]++; // character = frequency
+        }
+        for(char c : t) {
+            auto it = freqMap.find(c);
+            if(it == freqMap.end()) { // character not present in both strings
+                return false;
+            }
+            else {
+                it->second = it->second - 1; // decrement frequency
+            }
+        } 
+        for(auto it : freqMap) { // frequency should be 0 if anagrams
+            if(it.second != 0) return false;
+        }
+        return true;
+    }
