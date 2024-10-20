@@ -1,0 +1,84 @@
+A boolean expression is an expression that evaluates to either true or false. It can be in one of the following shapes:
+'t' that evaluates to true.
+'f' that evaluates to false.
+'!(subExpr)' that evaluates to the logical NOT of the inner expression subExpr.
+'&(subExpr1, subExpr2, ..., subExprn)' that evaluates to the logical AND of the inner expressions subExpr1, subExpr2, ..., subExprn where n >= 1.
+'|(subExpr1, subExpr2, ..., subExprn)' that evaluates to the logical OR of the inner expressions subExpr1, subExpr2, ..., subExprn where n >= 1.
+Given a string expression that represents a boolean expression, return the evaluation of that expression.
+It is guaranteed that the given expression is valid and follows the given rules.
+
+Example 1:
+Input: expression = "&(|(f))"
+Output: false
+Explanation: 
+First, evaluate |(f) --> f. The expression is now "&(f)".
+Then, evaluate &(f) --> f. The expression is now "f".
+Finally, return false.
+Example 2:
+Input: expression = "|(f,f,f,t)"
+Output: true
+Explanation: The evaluation of (false OR false OR false OR true) is true.
+Example 3:
+Input: expression = "!(&(f,t))"
+Output: true
+Explanation: 
+First, evaluate &(f,t) --> (false AND true) --> false --> f. The expression is now "!(f)".
+Then, evaluate !(f) --> NOT false --> true. We return true.
+ 
+
+Constraints:
+1 <= expression.length <= 2 * 104
+expression[i] is one following characters: '(', ')', '&', '|', '!', 't', 'f', and ','.
+
+class Solution {
+public:
+    bool parseBoolExpr(string expression) {
+        stack<char> st;
+        for(char c : expression) {
+            if(c == ')') 
+            {
+                vector<char> values;
+                while(st.top() != '(') {
+                    values.push_back(st.top()); // store the substring
+                    st.pop();
+                }
+                st.pop(); // remove the '('
+
+                char op = st.top();
+                st.pop(); // remove the operator
+
+                char result = evaluateSubstr(op, values);
+                st.push(result); // push the result in stack
+            }
+            else if(c != ',') 
+            {        
+                st.push(c);
+            }
+        }
+        return st.top() == 't';
+    }
+private:
+    char evaluateSubstr(char op, vector<char> values) {
+        if(op == '!') { // NOT OPERATOR
+            if(values[0] == 'f') return 't';
+            
+            return 'f';
+        }
+
+        if(op == '&') { // if one value is f, entire subexpr is f
+            for(char value : values) {
+                if(value == 'f') return 'f';  
+            }
+            return 't';
+        }
+
+        if(op == '|') { // if one value is t, entire subexpr is t
+            for(char value : values) {
+                if(value == 't') return 't'; 
+            }
+            return 'f';
+        }
+
+        return 'f'; // never to be executed
+    }
+};
