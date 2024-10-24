@@ -1,0 +1,77 @@
+Write a function to find the longest common prefix string amongst an array of strings.
+If there is no common prefix, return an empty string "".
+
+
+Input: strs = ["flower","flow","flight"]
+Output: "fl"
+
+Input: strs = ["dog","racecar","car"]
+Output: ""
+Explanation: There is no common prefix among the input strings.
+
+Input strs = ["reflower","flow","flight"]
+Output ""
+
+Input strs =["abab","aba",""]
+Output ""
+
+Input ["baab","bacb","b","cbc"]
+Output ""
+
+Input
+strs = ["acc","aaa","aaba"]
+Output "a"
+
+Input strs = ["ac","ac","a","a"]
+Output "a"
+
+Constraints:
+1 <= strs.length <= 200
+0 <= strs[i].length <= 200
+strs[i] consists of only lowercase English letters.
+
+
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& strs) {
+        if(strs.size() == 1) return strs[0];
+        int n = strs.size();
+
+        int len = 201;  //prefix size = min(strs[i].size() for i=0 to n-1)
+        for(int i = 0; i < n; i++) {
+            len = min(len, static_cast<int>(strs[i].size()) );
+        }
+    
+        if(len == 0) return ""; //  if min length = 0, prefix is empty
+
+        vector<char> prefix(len);
+        for(int i = 0; i < n - 1; i++) {
+            int j;
+            bool same = true;
+            for(j = 0; j < len; j++) {
+                if(strs[i][j] == strs[i + 1][j]) {
+                    if(prefix[j] != '#') { // if marked as visited(#) do not append prefix
+                        prefix[j] = strs[i][j];
+                    }
+                    else {
+                        break;
+                    }
+                }
+                else {
+                    same = false;
+                    break;
+                }
+            }
+            if(!same) {
+                prefix[j] = '#'; // to mark as visited 
+            }
+        }
+        string res = "";
+        for(char c : prefix) {
+            if(c == '\0' || c == '#') break;
+            res += c;
+        }
+        return res;
+    }
+};
+
