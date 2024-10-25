@@ -62,7 +62,7 @@ class Solution {
 public:
     int myAtoi(string s) {
         string str = "";
-        long long result = 0;
+        int result = 0;
         bool isNeg = false, isPos = false, notReadingNum = true;
 
         for(char c : s) {
@@ -89,14 +89,14 @@ public:
         // check within integer range
         if(str.size() >= 1) {
             try {
-                result = stoll(str);
+                result = stoi(str);
                 if(result > INT_MAX) {
                     if(isNeg) return INT_MIN;
                     return INT_MAX;
                 }
                 else {
-                    if(isNeg) return (int) result * -1;
-                    return (int) result;
+                    if(isNeg) return result * -1;
+                    return result;
                 }
             }
             catch (const std::out_of_range&) {
