@@ -90,14 +90,8 @@ public:
         if(str.size() >= 1) {
             try {
                 result = stoi(str);
-                if(result > INT_MAX) {
-                    if(isNeg) return INT_MIN;
-                    return INT_MAX;
-                }
-                else {
-                    if(isNeg) return result * -1;
-                    return result;
-                }
+                if(isNeg) return result * -1;
+                return result;
             }
             catch (const std::out_of_range&) {
                 if(isNeg) return INT_MIN;
