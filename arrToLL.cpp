@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Node {
+public:
+    int data;
+    Node* next;
+
+    Node(int value) { // constructor
+        data = value;
+        next = nullptr;
+    }
+};
+
+Node* arrToLL(vector<int> arr) {
+    if(arr.empty()) return nullptr; 
+
+    Node* head = new Node(arr[0]);
+    Node* curr = head;            // current node only used for traversal
+
+    for(int i = 1; i < arr.size(); i++) {
+        curr->next = new Node(arr[i]);
+        curr = curr->next;
+    }
+    return head;
+}
+
+int main() {
+    vector<int> arr = {1, 2, 3, 4, 5};
+    Node* answer = arrToLL(arr);
+    while(answer) {    // answer != NULL
+        cout << answer->data << ' ';
+        answer = answer->next;
+    }
+    return 0;
+}
