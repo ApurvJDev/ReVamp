@@ -1,0 +1,17 @@
+Node *insertAtEnd(Node *head, int x) {
+        Node* newNode = new Node(x);
+        
+        if(head == NULL) {
+            return newNode;
+        }
+        
+        Node* current = head;
+        
+        while(current->next != NULL) { // get the tail node
+            current = current->next;
+        }
+        
+        current->next = newNode; // attach new Node to tail Node
+        
+        return head;
+    }
