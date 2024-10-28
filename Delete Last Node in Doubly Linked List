@@ -1,0 +1,11 @@
+Node * deleteLastNode(Node *head) {
+    Node* curr = head;
+
+    if(head->next == nullptr) return nullptr;
+
+    while(curr->next != nullptr) curr = curr->next; // traverse to the tail node
+        
+    curr->prev->next = nullptr;
+    delete curr;
+    return head;
+}
