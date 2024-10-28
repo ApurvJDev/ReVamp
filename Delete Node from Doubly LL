@@ -1,0 +1,29 @@
+class Solution {
+  public:
+    // Function to delete a node at given position.
+    Node* deleteNode(Node* head, int x) {
+        if(head == nullptr) return nullptr;  // list is empty 
+        
+        if(x == 1) {                 // head node to be deleted
+            Node* newHead = head->next;
+            newHead->prev = nullptr;
+            delete head;
+            return newHead;
+        }
+        int pos = 1;
+        Node* curr = head;
+        
+        while(pos < x && cur != nullptr) {  // traverse to the node to be deleted
+            curr = curr->next;
+            pos += 1;
+        }
+        if (curr == nullptr) return head; // x is out of range
+        
+        curr->prev->next = curr->next;
+        
+        if(curr->next != nullptr) curr->next->prev = curr->prev;
+        
+        delete curr;
+        return head;
+    }
+};
