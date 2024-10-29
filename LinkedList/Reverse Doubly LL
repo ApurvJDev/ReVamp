@@ -1,0 +1,22 @@
+Node* reverseDLL(Node* head)
+{   
+    if(head->next == nullptr) return head;
+    if(head == NULL) return nullptr;
+
+    Node* curr = head;
+    Node* temp = nullptr;
+
+    while(curr) {
+        // make a copy of prev ptr for curr node
+        temp = curr->prev; 
+
+        // swap prev and next for each node
+        curr->prev = curr->next;
+        curr->next = temp;
+
+        // move next in the original order
+        curr = curr->prev;
+    }
+    if(temp != nullptr) head = temp->prev;
+    return head;
+}
