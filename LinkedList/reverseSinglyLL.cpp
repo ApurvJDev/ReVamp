@@ -39,10 +39,10 @@ Node* reverse(Node* head) {
     Node* prev = nullptr;
 
     while(curr) {
-        Node* nextNode = curr->next;    // store the next node
+        Node* front = curr->next;    // store the next node
         curr->next = prev;              // reverse the pointer of the curr node
         prev = curr;                    // move prev to curr node
-        curr = nextNode;                // move curr to next node
+        curr = front;                // move curr to next node
     }
     return prev;                        // prev will be new head
 }
