@@ -19,11 +19,11 @@ ListNode* reverseList(ListNode* head) {
         ListNode* prev = nullptr;
 
         while(curr) {
-            ListNode* nextNode = curr->next;    // store the nextNode
+            ListNode* front = curr->next;    // store the nextNode
 
             curr->next = prev;              // reverse the pointer of current node
             prev = curr;                    // move prev to curr Node
-            curr = nextNode;                // move curr to next Node
+            curr = front;                // move curr to next Node
         }
         return prev;
     }
