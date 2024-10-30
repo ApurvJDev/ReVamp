@@ -1,0 +1,11 @@
+bool hasCycle(ListNode *head) {
+// Floyd Cycle Detection Algo: Tortoise and Hare Algorithm 
+        ListNode* slow = head;  // use 2 ptr slow and fast
+        ListNode* fast = head;
+        while(fast != nullptr && fast->next != nullptr) {
+            slow = slow->next;  // slow moves 1 node at a time
+            fast = fast->next->next;    // fast moves 2 nodes at a time
+            if(slow == fast) return true;// if at same node: cycle present
+        }
+        return false;// if fast reaches null ptr: cycle not present
+    }
