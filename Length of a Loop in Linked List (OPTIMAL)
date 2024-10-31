@@ -1,0 +1,23 @@
+int getLoopLen(Node* slow, Node* fast) {
+    int count = 1;
+    fast = fast->next;
+    while(slow != fast) {
+        fast = fast->next;
+        count += 1;
+    }
+    return count;
+}
+
+int lengthOfLoop(Node *head) {
+    Node* slow = head;
+    Node* fast = head;
+
+    while(fast != nullptr && fast->next != nullptr) {
+        slow = slow->next;
+        fast = fast->next->next;
+        if(slow == fast) {
+            return getLoopLen(slow, fast);
+        }
+    }
+    return 0;
+}
