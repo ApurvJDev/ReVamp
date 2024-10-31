@@ -1,0 +1,33 @@
+bool isPalindrome(ListNode* head) {
+// find centre using Floyd's cycle detection algo
+// when fast reaches end, slow is at the middle
+        ListNode *slow = head, *fast = head;
+        while(fast != nullptr && fast->next != nullptr) {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+
+// reverse the 2nd half of the linked list
+        ListNode* prev = slow;
+        slow = slow->next;
+        prev->next = nullptr; // break the reverse cycle, avoid an endless loop.
+        while(slow) {
+            // store the front node(Node after slow) 
+            ListNode* front = slow->next;
+            // reverse the ptr of the slow node (current node)
+            slow->next = prev;
+            // increment the prev and the curr ptr
+            prev = slow;
+            slow = front;
+        }
+    
+// compare the fast and slow ptr
+        fast = head;
+        slow = prev;
+        while(slow) {
+            if(fast->val != slow->val) return false;
+            fast = fast->next;
+            slow = slow->next;
+        }
+        return true;
+    }
