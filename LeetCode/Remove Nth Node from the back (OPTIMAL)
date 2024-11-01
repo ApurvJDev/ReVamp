@@ -1,0 +1,19 @@
+ListNode* removeNthFromEnd(ListNode* head, int n) {
+        ListNode *slow = head, *fast = head;
+
+// give head start to fast ptr;
+        for(int i = 0; i < n; i++) {
+            fast = fast->next;
+        }
+
+// because size == n
+        if(fast == nullptr) return head->next;
+        
+// stop fast at tail node so we can get n - 1th node from the back
+        while(fast->next != nullptr) {
+            slow = slow->next;
+            fast = fast->next;
+        }
+        slow->next = slow->next->next;
+        return head;
+    }
