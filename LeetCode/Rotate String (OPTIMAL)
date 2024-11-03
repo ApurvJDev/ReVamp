@@ -1,0 +1,28 @@
+Instead of rotating the string and checking after each rotation, we can observe a relationship between s and goal. If goal can be formed by rotating s, it must be possible to find goal as a substring in some version of s.
+A clever way to exploit this is by concatenating s with itself. Why? Because this effectively creates a string that contains all possible rotations of s within it. For example, if s = "abcde", then s + s = "abcdeabcde". Notice how every possible rotation of s appears somewhere in this concatenated string.
+So, if goal can be obtained by rotating s, it must be a substring of s + s. To implement this, we simply check if goal is a substring of the concatenated string. If it is, we return true; otherwise, we return false.
+Concatenation Check
+Algorithm
+Check if the lengths of strings s and goal are different:
+If they are, return false because a rotation of s cannot match goal.
+Create a new string doubledString by concatenating s with itself.
+Use a string search method to find the substring goal within doubledString:
+If goal is found, check if this index is less than the length of doubledString.
+If it is, return true, indicating that goal is a valid rotation of s. Otherwise, return false.
+
+
+class Solution {
+public:
+    bool rotateString(string s, string goal) {
+        // Check if the lengths are different
+        if (s.length() != goal.length()) return false;
+
+        // Create a new string by concatenating 's' with itself
+        string doubledString = s + s;
+
+        // Use find to search for 'goal' in 'doubledString'
+        // If find returns an index that is less than the
+        // length of doubledString, 'goal' is a substring
+        return doubledString.find(goal) < doubledString.length();
+    }
+};
