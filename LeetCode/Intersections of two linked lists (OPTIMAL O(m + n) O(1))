@@ -1,0 +1,13 @@
+ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        ListNode *currA = headA, *currB = headB;
+        while(currA != nullptr && currB != nullptr && currA != currB) {
+            currA = currA->next;
+            currB = currB->next;
+
+            if(currA == currB) return currA;
+
+            if(currA == nullptr) currA = headB; // point them to the head of opp List if they became null
+            if(currB == nullptr) currB = headA;
+        }
+        return currA; // when only one node
+    }
