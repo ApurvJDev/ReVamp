@@ -1,0 +1,16 @@
+ListNode *detectCycle(ListNode *head) {
+        ListNode *slow = head, *fast = head;
+        while(fast != nullptr && fast->next != nullptr) {
+            slow = slow->next;
+            fast = fast->next->next;
+            if(slow == fast) { // loop detected
+                slow = head; // reset slow ptr to the head
+                while(slow != fast) {
+                    slow = slow->next; // move 1 node at a time
+                    fast = fast->next;
+                }
+                return slow; // slow == fast is the start of cycle
+            }
+        }
+        return nullptr; 
+    }
